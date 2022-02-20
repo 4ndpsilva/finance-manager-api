@@ -1,0 +1,15 @@
+dist: trusty
+
+language: java
+jdk: openjdk17
+
+sudo: true
+before_install:
+  - chmod +x mvnw
+
+script: mvn clean install
+
+deploy:
+  provider: heroku
+  app: $APP
+  api_key: $SECURE_KEY

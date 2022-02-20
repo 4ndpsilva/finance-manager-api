@@ -1,0 +1,26 @@
+server:
+  servlet:
+    contextPath: /
+
+spring:
+  jmx:
+    enabled: false  
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:financedb;DB_CLOSE_DELAY=-1
+    username: dba
+    password:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: FINANCE_DB
+
+  flyway:
+    schemas: FINANCE_DB
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
