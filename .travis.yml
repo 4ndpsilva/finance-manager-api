@@ -1,7 +1,7 @@
 dist: trusty
 
 language: java
-jdk: openjdk17
+jdk: oraclejdk11
 
 sudo: true
 before_install:
