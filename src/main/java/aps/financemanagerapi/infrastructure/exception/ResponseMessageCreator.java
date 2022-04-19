@@ -2,6 +2,7 @@ package aps.financemanagerapi.infrastructure.exception;
 
 import aps.financemanagerapi.infrastructure.exception.dto.ErrorDetailDTO;
 import aps.financemanagerapi.infrastructure.exception.dto.ErrorResponseDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public record ResponseMessageCreator(MessageSource messageSource){
+@RequiredArgsConstructor
+public class ResponseMessageCreator {
+    private final MessageSource messageSource;
 
     public ResponseEntity<List<ErrorResponseDTO>> error(final String codeMessage, final HttpStatus httpStatus) {
         final List<ErrorResponseDTO> errors = List.of(buildErrorResponse(codeMessage, httpStatus));

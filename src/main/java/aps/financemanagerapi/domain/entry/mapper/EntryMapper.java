@@ -25,15 +25,15 @@ public interface EntryMapper extends GenericMapper<Entry, EntryDTO> {
 
     default Entry toEntity(EntryDTO dto){
         final Entry entry = new Entry();
-        entry.setEntryDate(dto.entryDate());
-        entry.setCategory(dto.categoryId() == null ? null : new Category(dto.categoryId()));
-        entry.setAccount(dto.accountId() == null ? null : new Account(dto.accountId()));
-        entry.setCard(dto.cardId() == null ? null : new Card(dto.cardId()));
-        entry.setPaymentType(dto.paymentType());
-        entry.setOperation(dto.operation());
-        entry.setValue(dto.value());
-        entry.setDiscount(dto.discount());
-        entry.setObservation(dto.observation());
+        entry.setEntryDate(dto.getEntryDate());
+        entry.setCategory(dto.getCategoryId() == null ? null : new Category(dto.getCategoryId()));
+        entry.setAccount(dto.getAccountId() == null ? null : new Account(dto.getAccountId()));
+        entry.setCard(dto.getCardId() == null ? null : new Card(dto.getCardId()));
+        entry.setPaymentType(dto.getPaymentType());
+        entry.setOperation(dto.getOperation());
+        entry.setValue(dto.getValue());
+        entry.setDiscount(dto.getDiscount());
+        entry.setObservation(dto.getObservation());
         return entry;
     }
 }

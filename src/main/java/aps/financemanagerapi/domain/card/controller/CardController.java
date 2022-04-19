@@ -4,6 +4,7 @@ import aps.financemanagerapi.core.mapper.GenericMapper;
 import aps.financemanagerapi.core.service.AbstractCrudService;
 import aps.financemanagerapi.domain.card.dto.CardDTO;
 import aps.financemanagerapi.domain.card.entity.Card;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,11 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/cards")
-public record CardController(AbstractCrudService<Card, UUID> service, GenericMapper<Card, CardDTO> mapper){
+@RequiredArgsConstructor
+public class CardController{
+    private final AbstractCrudService<Card, Long> service;
+    private final GenericMapper<Card, CardDTO> mapper;
+
 
     @PostMapping
     public ResponseEntity<CardDTO> save(@RequestBody @Valid final CardDTO dto) {
@@ -31,18 +35,18 @@ public record CardController(AbstractCrudService<Card, UUID> service, GenericMap
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CardDTO> update(@PathVariable final UUID id, @RequestBody @Valid final CardDTO dto) {
+    public ResponseEntity<CardDTO> update(@PathVariable final Long id, @RequestBody @Valid final CardDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDTO(service.update(id, mapper.toEntity(dto))));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable final UUID id) {
+    public ResponseEntity<Void> delete(@PathVariable final Long id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CardDTO> findById(@PathVariable final UUID id) {
+    public ResponseEntity<CardDTO> findById(@PathVariable final Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDTO(service.findById(id)));
     }
 

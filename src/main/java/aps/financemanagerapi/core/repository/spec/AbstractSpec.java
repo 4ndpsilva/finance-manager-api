@@ -10,7 +10,6 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Setter
 public abstract class AbstractSpec<T> implements Specification<T> {
@@ -21,7 +20,7 @@ public abstract class AbstractSpec<T> implements Specification<T> {
         final List<Predicate> predicates = new ArrayList<>();
 
         if(params.get("id") != null && !params.get("id").toString().isBlank()){
-            final UUID id = UUID.fromString(params.get("id").toString());
+            final Long id = Long.valueOf(params.get("id").toString());
             predicates.add(criteriaBuilder.equal(root.get("id"), id.toString()));
         }
 

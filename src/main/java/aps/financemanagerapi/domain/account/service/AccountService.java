@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class AccountService extends BasicCrudService<Account, UUID> {
+public class AccountService extends BasicCrudService<Account, Long> {
 
     @Autowired
     public AccountService(final AccountRepository repository, final AccountSpec spec) {

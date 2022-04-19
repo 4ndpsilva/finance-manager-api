@@ -3,37 +3,40 @@ package aps.financemanagerapi.domain.entry.dto;
 import aps.financemanagerapi.domain.entry.entity.Operation;
 import aps.financemanagerapi.domain.entry.entity.PaymentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
-public record EntryDTO(
-        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        UUID id,
+@Getter
+@Setter
+public class EntryDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
-        @NotNull
-        LocalDate entryDate,
+    @NotNull
+    private LocalDate entryDate;
 
-        @NotNull
-        UUID categoryId,
+    @NotNull
+    private Long categoryId;
 
-        @NotNull
-        UUID accountId,
+    @NotNull
+    private Long accountId;
 
-        @NotNull
-        Operation operation,
+    @NotNull
+    private Operation operation;
 
-        @NotNull
-        PaymentType paymentType,
+    @NotNull
+    private PaymentType paymentType;
 
-        UUID cardId,
+    private Long cardId;
 
-        @NotNull
-        BigDecimal value,
+    @NotNull
+    private BigDecimal value;
 
-        BigDecimal discount,
+    private BigDecimal discount;
 
-        String observation
-){}
+    private String observation;
+}

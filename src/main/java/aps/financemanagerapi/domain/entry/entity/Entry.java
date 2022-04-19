@@ -15,12 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Data
 @Table(name = "TB_ENTRY")
 @Entity
-public class Entry extends BaseEntity<UUID> {
+public class Entry extends BaseEntity<Long> {
     @Column(name = "ENTRY_DATE")
     private LocalDate entryDate;
 

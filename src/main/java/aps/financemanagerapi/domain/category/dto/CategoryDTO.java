@@ -1,16 +1,23 @@
 package aps.financemanagerapi.domain.category.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import java.util.UUID;
 
-public record CategoryDTO (
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class CategoryDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    UUID id,
+    private Long id;
 
     @NotBlank
-    String name,
+    private String name;
 
-    String description
-){}
+    private String description;
+}

@@ -1,5 +1,5 @@
 CREATE TABLE TB_CARD(
-  ID              VARCHAR(255) NOT NULL,
+  ID              BIGINT NOT NULL,
   NAME            VARCHAR(30)  NOT NULL,
   CARD_TYPE       VARCHAR(10)  NOT NULL,
   FLAG            VARCHAR(20)  NOT NULL,

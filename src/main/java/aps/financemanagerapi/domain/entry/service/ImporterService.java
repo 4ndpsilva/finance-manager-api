@@ -13,8 +13,8 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -27,66 +27,72 @@ import java.util.List;
 @Service
 public class ImporterService {
     private String fileName;
+    private MultipartFile multipartFile;
 
-    public ResponseDTO<ImportDTO> execute() throws Exception {
+    public ResponseDTO<ImportDTO> execute() {
         final ResponseDTO<ImportDTO> responseDTO = new ResponseDTO<>();
 
-        try (final FileInputStream fis = new FileInputStream(new File(fileName))) {
+        try{
+            try (final FileInputStream fis = new FileInputStream(fileName)) {
 
-            final Workbook workbook = new HSSFWorkbook(fis);
-            final HSSFSheet sheet = (HSSFSheet) workbook.getSheetAt(0);
-            final Iterator<Row> iterator = sheet.iterator();
+                final Workbook workbook = new HSSFWorkbook(fis);
+                final HSSFSheet sheet = (HSSFSheet) workbook.getSheetAt(0);
+                final Iterator<Row> iterator = sheet.iterator();
 
-            final List<ImportDTO> entries = new LinkedList<>();
+                final List<ImportDTO> entries = new LinkedList<>();
 
-            while (iterator.hasNext()) {
-                final Row rowIterator = iterator.next();
+                while (iterator.hasNext()) {
+                    final Row rowIterator = iterator.next();
 
-                if (rowIterator.getRowNum() > 0) {
-                    if(!rowIterator.getCell(0).getStringCellValue().isEmpty()) {
-                        final Iterator<Cell> cellIterator = rowIterator.cellIterator();
+                    if (rowIterator.getRowNum() > 0) {
+                        if(!rowIterator.getCell(0).getStringCellValue().isEmpty()) {
+                            final Iterator<Cell> cellIterator = rowIterator.cellIterator();
 
-                        final ImportDTO dto = new ImportDTO();
+                            final ImportDTO dto = new ImportDTO();
 
-                        while (cellIterator.hasNext()) {
-                            final Cell cell = cellIterator.next();
+                            while (cellIterator.hasNext()) {
+                                final Cell cell = cellIterator.next();
 
-                            switch (cell.getColumnIndex()) {
-                                case 0:
-                                    dto.setCategory(getStringCellValue(cell));
-                                    break;
-                                case 1:
-                                    dto.setAccount(getStringCellValue(cell));
-                                    break;
-                                case 2:
-                                    dto.setEntryDate(DateUtil.toLocalDate(cell.getDateCellValue()));
-                                    break;
-                                case 3:
-                                    dto.setOperation(Operation.valueOf(cell.getStringCellValue().toUpperCase()));
-                                    break;
-                                case 4:
-                                    dto.setValue(new BigDecimal(cell.getNumericCellValue()));
-                                    break;
-                                case 5:
-                                    dto.setPaymentType(PaymentType.valueOf(cell.getStringCellValue().toUpperCase().replace("-", "_")));
-                                    break;
+                                switch (cell.getColumnIndex()) {
+                                    case 0:
+                                        dto.setCategory(getStringCellValue(cell));
+                                        break;
+                                    case 1:
+                                        dto.setAccount(getStringCellValue(cell));
+                                        break;
+                                    case 2:
+                                        dto.setEntryDate(DateUtil.toLocalDate(cell.getDateCellValue()));
+                                        break;
+                                    case 3:
+                                        dto.setOperation(Operation.valueOf(cell.getStringCellValue().toUpperCase()));
+                                        break;
+                                    case 4:
+                                        dto.setValue(new BigDecimal(cell.getNumericCellValue()));
+                                        break;
+                                    case 5:
+                                        dto.setPaymentType(PaymentType.valueOf(cell.getStringCellValue().toUpperCase().replace("-", "_")));
+                                        break;
+                                }
                             }
-                        }
 
-                        entries.add(dto);
+                            entries.add(dto);
+                        }
                     }
                 }
+
+                responseDTO.setDataSet(entries);
             }
 
-            responseDTO.setDataSet(entries);
+            return responseDTO;
         }
-
-        return responseDTO;
+        catch (Exception ex){
+            throw new RuntimeException(ex);
+        }
     }
 
     private String getStringCellValue(final Cell cell) {
         if (cell.getCellType() == CellType.STRING) {
-            return cell.getStringCellValue().toUpperCase();
+            return cell.getStringCellValue().strip().toUpperCase();
         }
         if (cell.getCellType() == CellType.NUMERIC) {
             return String.valueOf(cell.getNumericCellValue());

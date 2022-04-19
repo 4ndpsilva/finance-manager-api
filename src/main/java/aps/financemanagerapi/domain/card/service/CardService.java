@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class CardService extends BasicCrudService<Card, UUID> {
+public class CardService extends BasicCrudService<Card, Long> {
 
     @Autowired
     public CardService(final CardRepository repository, final CardSpec spec) {

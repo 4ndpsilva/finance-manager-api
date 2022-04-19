@@ -3,28 +3,35 @@ package aps.financemanagerapi.domain.card.dto;
 import aps.financemanagerapi.domain.card.entity.CardType;
 import aps.financemanagerapi.domain.card.entity.Flag;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.UUID;
 
-public record CardDTO(
-        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        UUID id,
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class CardDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
-        @NotBlank
-        String name,
+    @NotBlank
+    private String name;
 
-        @NotNull
-        CardType cardType,
+    @NotNull
+    private CardType cardType;
 
-        @NotNull
-        Flag flag,
+    @NotNull
+    private Flag flag;
 
-        Integer closingDay,
-        Integer payDay,
+    private Integer closingDay;
+    private Integer payDay;
 
-        @NotNull
-        LocalDate expirationDay
-){}
+    @NotNull
+    private LocalDate expirationDay;
+}

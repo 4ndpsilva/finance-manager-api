@@ -1,17 +1,17 @@
 INSERT INTO TB_CATEGORY (ID, NAME, DESCRIPTION, CREATED_AT, UPDATED_AT)
-    VALUES('e1d9402b-1c02-4cb6-9a2b-bcb54d4b2bfe', 'Alimentação', '', current_timestamp, null);
+    VALUES(1, 'Alimentação', '', current_timestamp, null);
 
 INSERT INTO TB_CATEGORY (ID, NAME, DESCRIPTION, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120003', 'Bebida', '', current_timestamp, null);
+    VALUES(2, 'Bebida', '', current_timestamp, null);
 
 INSERT INTO TB_CATEGORY (ID, NAME, DESCRIPTION, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120004', 'Moradia', '', current_timestamp, null);
+    VALUES(3, 'Moradia', '', current_timestamp, null);
 
 INSERT INTO TB_CATEGORY (ID, NAME, DESCRIPTION, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120005', 'Estudos', '', current_timestamp, null);
+    VALUES(4, 'Estudos', '', current_timestamp, null);
 
 INSERT INTO TB_CATEGORY (ID, NAME, DESCRIPTION, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120006', 'Transporte', '', current_timestamp, null);
+    VALUES(5, 'Transporte', '', current_timestamp, null);
 
 INSERT INTO TB_CATEGORY (ID, NAME, DESCRIPTION, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120007', 'Lazer', '', current_timestamp, null);
+    VALUES(6, 'Lazer', '', current_timestamp, null);

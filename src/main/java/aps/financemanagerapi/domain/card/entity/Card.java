@@ -10,13 +10,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Table(name = "TB_CARD")
 @Entity
-public class Card extends BaseEntity<UUID> {
+public class Card extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;
 
@@ -37,7 +36,7 @@ public class Card extends BaseEntity<UUID> {
     @Column(name = "EXPIRATION_DATE")
     private LocalDate expirationDay;
 
-    public Card(final UUID id){
+    public Card(final Long id){
         super(id);
     }
 }

@@ -1,17 +1,17 @@
 INSERT INTO TB_ACCOUNT (ID, CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120001', '932320f6-8e29-11ec-b909-0242ac120002', 'Arroz', current_timestamp, null);
+    VALUES(1, 1, 'Arroz', current_timestamp, null);
 
 INSERT INTO TB_ACCOUNT (ID, CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120002', '932320f6-8e29-11ec-b909-0242ac120003', 'Refrigerante', current_timestamp, null);
+    VALUES(2, 2, 'Refrigerante', current_timestamp, null);
 
 INSERT INTO TB_ACCOUNT (ID, CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120003', '932320f6-8e29-11ec-b909-0242ac120003', 'Leite', current_timestamp, null);
+    VALUES(3, 2, 'Leite', current_timestamp, null);
 
 INSERT INTO TB_ACCOUNT (ID, CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120004', '932320f6-8e29-11ec-b909-0242ac120003', 'Cerveja', current_timestamp, null);
+    VALUES(4, 2, 'Cerveja', current_timestamp, null);
 
 INSERT INTO TB_ACCOUNT (ID, CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120005', '932320f6-8e29-11ec-b909-0242ac120002', 'Bolacha', current_timestamp, null);
+    VALUES(5, 1, 'Bolacha', current_timestamp, null);
 
 INSERT INTO TB_ACCOUNT (ID, CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
-    VALUES('932320f6-8e29-11ec-b909-0242ac120006', '932320f6-8e29-11ec-b909-0242ac120002', 'Refeição', current_timestamp, null);
+    VALUES(6, 1, 'Refeição', current_timestamp, null);

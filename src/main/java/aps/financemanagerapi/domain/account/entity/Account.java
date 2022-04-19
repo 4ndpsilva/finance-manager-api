@@ -10,13 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Table(name = "TB_ACCOUNT")
 @Entity
-public class Account extends BaseEntity<UUID> {
+public class Account extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;
 
@@ -24,7 +23,7 @@ public class Account extends BaseEntity<UUID> {
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
-    public Account(final UUID id){
+    public Account(final Long id){
         super(id);
     }
 }

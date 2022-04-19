@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class EntryService extends BasicCrudService<Entry, UUID> {
+public class EntryService extends BasicCrudService<Entry, Long> {
     public EntryService(final EntryRepository repository, final EntrySpec spec){
         super(repository, spec, Entry.class);
     }
