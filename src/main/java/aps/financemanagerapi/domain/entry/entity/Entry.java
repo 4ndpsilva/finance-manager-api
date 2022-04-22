@@ -51,4 +51,8 @@ public class Entry extends BaseEntity<Long> {
 
     @Column(name = "OBSERVATION")
     private String observation;
+
+    public void setObservation(final String observation) {
+        this.observation = observation != null ? observation.toUpperCase() : null;
+    }
 }

@@ -41,7 +41,7 @@ public class EntrySpec extends AbstractSpec<Entry> {
             predicates.add(builder.between(root.get("entryDate"), startDate, endDate));
         }
 
-        if(params.get("categoryId") != null){
+        if(params.get("categoryId") != null) {
             final Long categoryId = Long.valueOf(params.get("categoryId").toString());
             final Category category = new Category(categoryId);
             predicates.add(builder.equal(root.get("category"), category));

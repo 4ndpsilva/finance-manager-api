@@ -2,6 +2,8 @@ package aps.financemanagerapi.domain.card.repository.spec;
 
 import aps.financemanagerapi.core.repository.spec.AbstractSpec;
 import aps.financemanagerapi.domain.card.entity.Card;
+import aps.financemanagerapi.domain.card.entity.CardType;
+import aps.financemanagerapi.domain.card.entity.Flag;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
@@ -31,12 +33,12 @@ public class CardSpec extends AbstractSpec<Card> {
         }
 
         if(params.get("cardType") != null && !params.get("cardType").toString().isBlank()){
-            final String cardType = params.get("cardType").toString();
+            final CardType cardType = CardType.valueOf(params.get("cardType").toString());
             predicates.add(builder.equal(root.get("cardType"), cardType));
         }
 
         if(params.get("flag") != null && !params.get("flag").toString().isBlank()){
-            final String flag = params.get("flag").toString();
+            final Flag flag = Flag.valueOf(params.get("flag").toString());
             predicates.add(builder.equal(root.get("flag"), flag));
         }
 
