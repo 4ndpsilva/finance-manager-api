@@ -37,4 +37,8 @@ public class Card extends BaseEntity<Long> {
     public Card(final Long id){
         super(id);
     }
+
+    public void setName(String name) {
+        this.name = name.toUpperCase();
+    }
 }

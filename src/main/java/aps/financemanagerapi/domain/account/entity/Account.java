@@ -24,4 +24,8 @@ public class Account extends BaseEntity<Long> {
     public Account(final Long id){
         super(id);
     }
+
+    public void setName(String name) {
+        this.name = name.toUpperCase();
+    }
 }

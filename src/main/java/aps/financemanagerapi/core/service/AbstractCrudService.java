@@ -41,10 +41,11 @@ public abstract class AbstractCrudService<T extends BaseEntity<ID>, ID extends S
     @Transactional
     public T update(final ID id, final T updateEntity) {
         try{
-            validate(updateEntity);
             log.info("Iniciando operacao Update");
 
             final T entity = findById(id);
+
+            validate(updateEntity);
             final T updated = save(updateEntity, entity, "id");
 
             log.info("Operacao Update finalizada");
