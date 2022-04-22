@@ -1,6 +1,9 @@
 package aps.financemanagerapi.domain.entry.repository.spec;
 
 import aps.financemanagerapi.core.repository.spec.AbstractSpec;
+import aps.financemanagerapi.domain.account.entity.Account;
+import aps.financemanagerapi.domain.card.entity.Card;
+import aps.financemanagerapi.domain.category.entity.Category;
 import aps.financemanagerapi.domain.entry.entity.Entry;
 import aps.financemanagerapi.domain.entry.entity.Operation;
 import aps.financemanagerapi.domain.entry.entity.PaymentType;
@@ -36,6 +39,24 @@ public class EntrySpec extends AbstractSpec<Entry> {
             }
 
             predicates.add(builder.between(root.get("entryDate"), startDate, endDate));
+        }
+
+        if(params.get("categoryId") != null){
+            final Long categoryId = Long.valueOf(params.get("categoryId").toString());
+            final Category category = new Category(categoryId);
+            predicates.add(builder.equal(root.get("category"), category));
+        }
+
+        if(params.get("accountId") != null){
+            final Long accountId = Long.valueOf(params.get("accountId").toString());
+            final Account account = new Account(accountId);
+            predicates.add(builder.equal(root.get("account"), account));
+        }
+
+        if(params.get("cardId") != null){
+            final Long cardId = Long.valueOf(params.get("cardId").toString());
+            final Card card = new Card(cardId);
+            predicates.add(builder.equal(root.get("card"), card));
         }
 
         if(params.get("operation") != null && !params.get("operation").toString().isBlank()){

@@ -9,12 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
-@Table(name = "TB_ACCOUNT")
-@Entity
+@Entity(name = "TB_ACCOUNT")
 public class Account extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;

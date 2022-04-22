@@ -51,7 +51,7 @@ public class CardController{
     }
 
     @GetMapping
-    public ResponseEntity<List<CardDTO>> list(@RequestParam final Map<String, Object> params) {
+    public ResponseEntity<List<CardDTO>> find(@RequestParam final Map<String, Object> params) {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toListDTO(service.find(params)));
     }
 }

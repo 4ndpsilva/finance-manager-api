@@ -24,19 +24,19 @@ public class CardSpec extends AbstractSpec<Card> {
         final List<Predicate> predicates = new ArrayList<>();
         predicates.add(super.toPredicate(root, query, builder));
 
-        Object name = params.get("name");
+        final Object name = params.get("name");
 
         if(name != null && !name.toString().isBlank()){
             predicates.add(builder.like(builder.lower(root.get("name")), "%"+name.toString().toLowerCase()+"%"));
         }
 
         if(params.get("cardType") != null && !params.get("cardType").toString().isBlank()){
-            String cardType = params.get("cardType").toString();
-            predicates.add(builder.equal(root.get("cartType"), cardType));
+            final String cardType = params.get("cardType").toString();
+            predicates.add(builder.equal(root.get("cardType"), cardType));
         }
 
         if(params.get("flag") != null && !params.get("flag").toString().isBlank()){
-            String flag = params.get("flag").toString();
+            final String flag = params.get("flag").toString();
             predicates.add(builder.equal(root.get("flag"), flag));
         }
 

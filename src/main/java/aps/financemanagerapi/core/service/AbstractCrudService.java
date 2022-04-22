@@ -23,7 +23,7 @@ public abstract class AbstractCrudService<T extends BaseEntity<ID>, ID extends S
     @Transactional
     public T save(final T entity) {
         try{
-            validate();
+            validate(entity);
             log.info("Iniciando operacao Save");
 
             final T entityObj = BeanUtils.instantiateClass(entityClass);
@@ -41,7 +41,7 @@ public abstract class AbstractCrudService<T extends BaseEntity<ID>, ID extends S
     @Transactional
     public T update(final ID id, final T updateEntity) {
         try{
-            validate();
+            validate(updateEntity);
             log.info("Iniciando operacao Update");
 
             final T entity = findById(id);
@@ -91,7 +91,7 @@ public abstract class AbstractCrudService<T extends BaseEntity<ID>, ID extends S
         return repository.findAll(createFilter(params));
     }
 
-    public void validate(){}
+    public void validate(final T entity){}
 
     public abstract Specification<T> createFilter(final Map<String, Object> params);
 }

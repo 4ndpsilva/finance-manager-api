@@ -12,13 +12,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
-@Table(name = "TB_ENTRY")
-@Entity
+@Entity(name = "TB_ENTRY")
 public class Entry extends BaseEntity<Long> {
     @Column(name = "ENTRY_DATE")
     private LocalDate entryDate;
@@ -39,6 +38,7 @@ public class Entry extends BaseEntity<Long> {
     @Column(name = "PAYMENT_TYPE")
     private PaymentType paymentType;
 
+    @Transient
     @ManyToOne
     @JoinColumn(name = "CARD_ID")
     private Card card;

@@ -50,7 +50,7 @@ public class CategoryController{
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> list(@RequestParam final Map<String, Object> params) {
+    public ResponseEntity<List<CategoryDTO>> find(@RequestParam final Map<String, Object> params) {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toListDTO(service.find(params)));
     }
 }

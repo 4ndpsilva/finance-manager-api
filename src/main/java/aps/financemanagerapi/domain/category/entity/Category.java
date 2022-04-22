@@ -8,13 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import java.util.Set;
 
 @Data
 @NoArgsConstructor
-@Table(name = "TB_CATEGORY")
-@Entity
+@Entity(name = "TB_CATEGORY")
 public class Category extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;

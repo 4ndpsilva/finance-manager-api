@@ -51,7 +51,7 @@ public class AccountController{
     }
 
     @GetMapping
-    public ResponseEntity<List<AccountDTO>> list(@RequestParam final Map<String, Object> params) {
+    public ResponseEntity<List<AccountDTO>> find(@RequestParam final Map<String, Object> params) {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toListDTO(service.find(params)));
     }
 }

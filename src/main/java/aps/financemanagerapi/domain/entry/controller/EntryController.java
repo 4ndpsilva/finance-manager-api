@@ -50,7 +50,7 @@ public class EntryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EntryDTO>> list(@RequestParam final Map<String, Object> params) {
+    public ResponseEntity<List<EntryDTO>> find(@RequestParam final Map<String, Object> params) {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toListDTO(service.find(params)));
     }
 }
