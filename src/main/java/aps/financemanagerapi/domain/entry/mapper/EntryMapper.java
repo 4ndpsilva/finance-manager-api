@@ -15,7 +15,7 @@ public interface EntryMapper extends GenericMapper<Entry, EntryDTO> {
             @Mapping(source = "category.id", target = "categoryId"),
             @Mapping(source = "account.id", target = "accountId"),
             @Mapping(source = "card.id", target = "cardId"),
-            @Mapping(source = "entity.entryDate", target = "entryDate", dateFormat = "dd/MM/yyyy")
+            @Mapping(source = "entity.entryDate", target = "entryDate")
     })
     EntryDTO toDTO(Entry entity);
 

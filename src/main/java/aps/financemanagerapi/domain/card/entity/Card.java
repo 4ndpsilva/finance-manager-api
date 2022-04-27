@@ -8,11 +8,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@Entity(name = "TB_CARD")
+@Entity
+@Table(name = "TB_CARD")
 public class Card extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;

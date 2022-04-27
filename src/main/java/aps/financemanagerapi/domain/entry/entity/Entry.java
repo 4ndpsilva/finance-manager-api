@@ -12,12 +12,20 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
-@Entity(name = "TB_ENTRY")
+@Entity
+@Table(name = "TB_ENTRY")
+@NamedEntityGraph(name = "entry-graph", attributeNodes = {
+        @NamedAttributeNode(value = "category"),
+        @NamedAttributeNode(value = "account"),
+        @NamedAttributeNode(value = "card")
+})
 public class Entry extends BaseEntity<Long> {
     @Column(name = "ENTRY_DATE")
     private LocalDate entryDate;
@@ -38,7 +46,6 @@ public class Entry extends BaseEntity<Long> {
     @Column(name = "PAYMENT_TYPE")
     private PaymentType paymentType;
 
-    @Transient
     @ManyToOne
     @JoinColumn(name = "CARD_ID")
     private Card card;
@@ -51,6 +58,10 @@ public class Entry extends BaseEntity<Long> {
 
     @Column(name = "OBSERVATION")
     private String observation;
+
+    public void setCard(final Card card){
+        this.card = card != null && card.getId() != null ? card : null;
+    }
 
     public void setObservation(final String observation) {
         this.observation = observation != null ? observation.toUpperCase() : null;

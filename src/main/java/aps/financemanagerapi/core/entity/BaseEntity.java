@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class BaseEntity<ID extends Serializable> {
+public abstract class BaseEntity<ID extends Serializable>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

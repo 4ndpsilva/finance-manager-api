@@ -64,9 +64,9 @@ public class EntrySpec extends AbstractSpec<Entry> {
             predicates.add(builder.equal(root.get("operation"), operation));
         }
 
-        if(params.get("payment") != null && !params.get("payment").toString().isBlank()){
-            final PaymentType payment = PaymentType.valueOf(params.get("payment").toString());
-            predicates.add(builder.equal(root.get("payment"), payment));
+        if(params.get("paymentType") != null && !params.get("paymentType").toString().isBlank()){
+            final PaymentType payment = PaymentType.valueOf(params.get("paymentType").toString());
+            predicates.add(builder.equal(root.get("paymentType"), payment));
         }
 
         final Object observation = params.get("observation");

@@ -9,10 +9,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
-@Entity(name = "TB_ACCOUNT")
+@Entity
+@Table(name = "TB_ACCOUNT")
+@NamedEntityGraph(name = "category-graph", attributeNodes = @NamedAttributeNode(value = "category"))
 public class Account extends BaseEntity<Long> {
     @Column(name = "NAME")
     private String name;
