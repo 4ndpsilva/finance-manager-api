@@ -2,6 +2,8 @@ package aps.financemanagerapi.domain.entry.dto;
 
 import aps.financemanagerapi.domain.entry.entity.Operation;
 import aps.financemanagerapi.domain.entry.entity.PaymentType;
+import aps.financemanagerapi.infrastructure.util.ConstantUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +19,7 @@ public class EntryDTO {
     private Long id;
 
     @NotNull
+    @JsonFormat(pattern = ConstantUtil.DATE_PATTERN)
     private LocalDate entryDate;
 
     @NotNull

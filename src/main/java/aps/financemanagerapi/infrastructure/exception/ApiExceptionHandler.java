@@ -1,6 +1,7 @@
 package aps.financemanagerapi.infrastructure.exception;
 
 import aps.financemanagerapi.infrastructure.exception.dto.ErrorResponseDTO;
+import aps.financemanagerapi.infrastructure.util.ConstantMSG;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(DateTimeParseException.class)
     public ResponseEntity<List<ErrorResponseDTO>> handleDateFormat(){
-        final BusinessException exception = new BusinessException("API-008");
+        final BusinessException exception = new BusinessException(ConstantMSG.API_008);
         return responseMessageCreator.error(exception.getCodeMessage(), HttpStatus.BAD_REQUEST);
     }
 }

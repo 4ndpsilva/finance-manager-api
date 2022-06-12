@@ -2,6 +2,7 @@ package aps.financemanagerapi.infrastructure.exception;
 
 import aps.financemanagerapi.infrastructure.exception.dto.ErrorDetailDTO;
 import aps.financemanagerapi.infrastructure.exception.dto.ErrorResponseDTO;
+import aps.financemanagerapi.infrastructure.util.ConstantMSG;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -28,7 +29,7 @@ public class ResponseMessageCreator {
         final List<ErrorDetailDTO> errors = new ArrayList<>();
         bindingResult.getFieldErrors().forEach(f -> errors.add(new ErrorDetailDTO(f.getField(), f.getDefaultMessage())));
 
-        final ErrorResponseDTO error = buildErrorResponse("API-011", HttpStatus.BAD_REQUEST);
+        final ErrorResponseDTO error = buildErrorResponse(ConstantMSG.API_011, HttpStatus.BAD_REQUEST);
         error.setErrorDetails(errors);
 
         return List.of(error);

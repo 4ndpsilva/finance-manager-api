@@ -1,5 +1,6 @@
 package aps.financemanagerapi.infrastructure.exception.dto;
 
+import aps.financemanagerapi.infrastructure.util.ConstantUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +15,7 @@ public class ErrorResponseDTO {
     private String message;
     private Integer statusCode;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(pattern = ConstantUtil.DATE_PATTERN +" " +ConstantUtil.TIME_PATTERN+":ss")
     private LocalDateTime timestamp;
 
     private List<ErrorDetailDTO> errorDetails;
