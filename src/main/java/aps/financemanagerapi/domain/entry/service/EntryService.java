@@ -34,10 +34,10 @@ public class EntryService extends BasicCrudService<Entry, Long> {
 
     @Override
     public void validate(final Entry entry) {
-        categoryService.exist(entry.getCategory());
-        accountService.exist(entry.getAccount());
+        categoryService.validate(entry.getCategory());
+        accountService.validate(entry.getAccount());
         validatePaymentType(entry);
-        cardService.exist(entry.getCard());
+        cardService.validate(entry.getCard());
     }
 
     private void validatePaymentType(Entry entry){

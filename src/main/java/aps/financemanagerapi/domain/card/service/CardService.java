@@ -18,7 +18,7 @@ public class CardService extends BasicCrudService<Card, Long> {
         this.repository = repository;
     }
 
-    public void exist(final Card card){
+    public void validate(final Card card){
         if(card != null && card.getId() != null){
             if(!repository.existsById(card.getId())){
                 throw new ResourceNotFoundException("API-014");

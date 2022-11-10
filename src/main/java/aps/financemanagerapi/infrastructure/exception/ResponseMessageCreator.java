@@ -19,9 +19,9 @@ import java.util.List;
 public class ResponseMessageCreator {
     private final MessageSource messageSource;
 
-    public ResponseEntity<List<ErrorResponseDTO>> error(final String codeMessage, final HttpStatus httpStatus) {
-        final List<ErrorResponseDTO> errors = List.of(buildErrorResponse(codeMessage, httpStatus));
-        return ResponseEntity.status(httpStatus).body(errors);
+    public ResponseEntity<ErrorResponseDTO> error(final String codeMessage, final HttpStatus httpStatus) {
+        final ErrorResponseDTO errorResponse = buildErrorResponse(codeMessage, httpStatus);
+        return ResponseEntity.status(httpStatus).body(errorResponse);
     }
 
     public List<ErrorResponseDTO> getErrors(final BindingResult bindingResult) {

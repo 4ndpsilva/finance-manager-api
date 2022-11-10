@@ -4,7 +4,7 @@ import aps.financemanagerapi.core.entity.BaseEntity;
 import aps.financemanagerapi.core.repository.BaseRepository;
 import aps.financemanagerapi.infrastructure.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Log4j2
+@Slf4j
 @RequiredArgsConstructor
 public abstract class AbstractCrudService<T extends BaseEntity<ID>, ID extends Serializable> {
     private final BaseRepository<T, ID> repository;
@@ -79,17 +79,29 @@ public abstract class AbstractCrudService<T extends BaseEntity<ID>, ID extends S
     }
 
     public T findById(final ID id) {
-        final Optional<T> opEntity = repository.findById(id);
+        try{
+            final Optional<T> opEntity = repository.findById(id);
 
-        if (opEntity.isPresent()) {
-            return opEntity.get();
+            if (opEntity.isPresent()) {
+                return opEntity.get();
+            }
+
+            throw new ResourceNotFoundException("API-000", id);
         }
-
-        throw new ResourceNotFoundException("API-000", id);
+        catch (Exception ex){
+            log.info("Erro na operacao de consulta por ID: ", ex);
+            throw ex;
+        }
     }
 
     public List<T> find(Map<String, Object> params) {
-        return repository.findAll(createFilter(params));
+        try{
+            return repository.findAll(createFilter(params));
+        }
+        catch (Exception ex) {
+            log.info("Erro na operacao de consulta por filtro: ", ex);
+            throw ex;
+        }
     }
 
     public void validate(final T entity){}

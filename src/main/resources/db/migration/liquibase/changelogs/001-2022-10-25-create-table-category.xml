@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1" author="andre">
+        <createTable tableName="TB_CATEGORY">
+            <column name="ID" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="varchar(30)"/>
+            <column name="CREATED_AT" type="datetime"/>
+            <column name="UPDATED_AT" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="andre" dbms="h2">
+        <addAutoIncrement tableName="TB_CATEGORY" columnName="ID" startWith="1" incrementBy="1" columnDataType="bigint"/>
+        <addUniqueConstraint tableName="TB_CATEGORY" columnNames="NAME"/>
+    </changeSet>
+</databaseChangeLog>

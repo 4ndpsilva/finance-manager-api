@@ -7,8 +7,8 @@ import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 public class DateUtil {
-    private static final String DATE_PATTERN         = "dd/MM/yyyy";
-    private static final String TIME_PATTERN         = "HH:mm:ss";
+    public static final String DATE_PATTERN = "dd/MM/yyyy";
+    public static final String TIME_PATTERN = "HH:mm:ss";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
 
     public static String format(final LocalDate date){

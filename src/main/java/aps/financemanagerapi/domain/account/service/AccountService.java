@@ -18,7 +18,7 @@ public class AccountService extends BasicCrudService<Account, Long> {
         this.repository = repository;
     }
 
-    public void exist(final Account account){
+    public void validate(final Account account){
         if(!repository.existsById(account.getId())){
             throw new ResourceNotFoundException("API-013");
         }
