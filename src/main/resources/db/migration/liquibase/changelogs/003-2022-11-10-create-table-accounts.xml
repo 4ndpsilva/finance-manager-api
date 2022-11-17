@@ -5,6 +5,7 @@
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
     <changeSet id="1" author="andre">
+
         <createTable tableName="TB_ACCOUNT">
             <column name="ID" type="BIGINT">
                 <constraints nullable="false"/>
@@ -25,4 +26,26 @@
                                  referencedTableName="TB_CATEGORY"
                                  referencedColumnNames="ID"/>
     </changeSet>
+    
+    <changeSet id="3" author="andre">
+        <sql>
+            INSERT INTO TB_ACCOUNT (CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
+            VALUES(1, 'Arroz', current_timestamp, null);
+
+            INSERT INTO TB_ACCOUNT (CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
+            VALUES(2, 'Refrigerante', current_timestamp, null);
+
+            INSERT INTO TB_ACCOUNT (CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
+            VALUES(2, 'Leite', current_timestamp, null);
+
+            INSERT INTO TB_ACCOUNT (CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
+            VALUES(2, 'Cerveja', current_timestamp, null);
+
+            INSERT INTO TB_ACCOUNT (CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
+            VALUES(1, 'Bolacha', current_timestamp, null);
+
+            INSERT INTO TB_ACCOUNT (CATEGORY_ID, NAME, CREATED_AT, UPDATED_AT)
+            VALUES(1, 'Refeição', current_timestamp, null);
+        </sql>
+    </changeSet> 
 </databaseChangeLog>

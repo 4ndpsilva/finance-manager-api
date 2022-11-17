@@ -20,8 +20,10 @@ public class CategoryService extends BasicCrudService<Category, Long> {
 
     @Override
     public void validate(final Category category){
-        if(!repository.existsById(category.getId())){
-            throw new ResourceNotFoundException("API-012");
+        if(category != null && category.getId() != null){
+            if(!repository.existsById(category.getId())){
+                throw new ResourceNotFoundException("API-012");
+            }
         }
     }
 }
